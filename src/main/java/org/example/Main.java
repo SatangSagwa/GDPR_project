@@ -9,7 +9,7 @@ public class Main {
         User user = new User(1, "Qwerty", "info@mail.com","password", "Anteckning...");
 
         // 2. logga ut den skapade usern med sout
-        System.out.printf("%s has been logged out.", user.getName());
+        System.out.printf("%s has been logged out.\n", user.getName());
 
         // 3. initiera GDPR-processor och tjänster:
         // - skapa instanser av GDPRProcessor, EncryptionService (finns redan) och PrivacyPolicyGenerator
@@ -18,7 +18,7 @@ public class Main {
         PrivacyPolicyGenerator privacyPolicyGenerator = new PrivacyPolicyGenerator();
 
         // 4. logga databehandling: kör metoden logDataProcessing()
-        gdprProcessor.logDataProcessing();
+        gdprProcessor.logDataProcessing(user, "edit");
 
         // 5. kryptera och avkryptera lösenord
         // obs ändra i encrypt() om ni inte döpt er user till just user...
@@ -42,7 +42,7 @@ public class Main {
         // - kör metoden anonymizeUser()
         gdprProcessor.anonymizeUser(user);
         // - logga databehandling genom att köra logDataProcessing()
-        gdprProcessor.logDataProcessing();
+        gdprProcessor.logDataProcessing(user, "delete");
         // 7. generera privacy policy
         // kör metoden generatePrivacyPolicy()
         privacyPolicyGenerator.generatePrivacyPolicy("");
